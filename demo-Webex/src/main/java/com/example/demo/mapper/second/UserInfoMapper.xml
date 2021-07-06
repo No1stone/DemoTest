@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        
+<mapper namespace="com.example.demo.mapper.second.SecondDAO">
+
+
+	<select id="findUserByPersonEmail" resultType="com.example.demo.model.UserInfo">
+		SELECT
+			user_id AS userId,
+			user_name AS userName,
+			webex_id AS webexId,
+			dept_id AS deptId,
+			dept_name AS deptName,
+			webex_person_id AS personId,
+			user_type as userType,
+		    site_cd as siteCd
+		FROM vw_vc_user_info
+		where webex_id = #{personEmail}
+	</select>
+
+	<select id="findSiteDomain" resultType="com.example.demo.model.SiteDomain">
+		SELECT
+			SITE_CD AS SiteCD,
+			SITE_NM AS SiteNM,
+			SITE_DOMAIN AS SiteDomain,
+			LMS_DOMAIN AS LMSDomain,
+			WEBEX_SITE_CODE AS WebexSiteCode
+		FROM vw_vc_site_info
+		WHERE SITE_CD = #{SiteCD}
+	</select>
+	
+</mapper>

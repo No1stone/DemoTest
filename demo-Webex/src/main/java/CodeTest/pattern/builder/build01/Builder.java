@@ -1,0 +1,20 @@
+package CodeTest.pattern.builder.build01;
+
+public abstract class Builder {
+
+	protected Monster monster;
+	
+	abstract public void setHp();
+	abstract public void setAt();
+	abstract public void setDf();
+	abstract public void setName();
+	
+	public Monster build(){
+		setAt();
+		setDf();
+		setHp();
+		setName();
+		return monster;
+	};
+
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "
+http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.TestDAO">
+
+<select id = "CheckSelect" resultType="testbind">
+	Select
+	*
+	FROM meetingmem 
+	WHERE email = #{email} and pass = #{pass}
+</select>
+
+<insert id = "Loginsert" parameterType="com.example.demo.model.LogModel" useGeneratedKeys="true" keyProperty="idx">
+
+	INSERT INTO msg_bot_msg_log 
+	(
+		site_cd, 
+		person_id, 
+		person_Email, 
+		msg, 
+		msgDate
+	) 
+	VALUES
+	(
+		#{siteCd},
+		#{personId},
+		#{personEmail},
+		#{msg},
+		#{msgDate}		
+	)
+</insert>
+
+<select id = "chatbothandleSelect" resultType="chatbotdbhandler">
+	Select
+	*
+	FROM msg_bot_handler 
+	WHERE sitetype = #{siteType} and searchkey = #{searchKey}
+</select>
+
+</mapper>
